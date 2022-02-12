@@ -1,0 +1,24 @@
+{
+  "name": "social-media-api",
+  "version": "1.0.0",
+  "description": "I WANT an API for my social network that uses a NoSQL database\r - SO THAT my website can handle large amounts of unstructured data",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samvauclain/social-media-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samvauclain/social-media-api/issues"
+  },
+  "homepage": "https://github.com/samvauclain/social-media-api#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
+  }
+}
