@@ -12,34 +12,28 @@ const thoughtController  = {
 },
 
     // get a thought by ID
-    getThoughtByID({ params }, res) {
-        console.log(params)
-        Thought.findOne({_id:params.thoughtId})
-        .then(dbThoughts => {
-            if(!dbThoughts) {
-                res.status(404).json({ message: 'No thought found with this id'})
-                return;
-            }
-            res.json(dbThoughts);
-        })        
-        .catch(err => {
-            console.log(err);
-            res.status(400).json(err);
-        });
+    getThoughtById({ params }, res) {
+        Thought.findOne({ _id: params.id })
+            .select('-__v')
+            .then(dbThoughts => res.json(dbThoughts))
+            .catch(err => {
+                console.log(err)
+                res.status(404).json({ message: 'No thought found with this id'} )
+            })
     },
 
     // create a new thought
     createThought({ params, body }, res) {
         Thought.create(body).then(({_id }) => {
                 return User.findOneAndUpdate(
-                    {_id: params.userId},
+                    { _id: params.userId },
                     { $push: { thoughts: _id }},
                     { new: true}
                 );
             })
             .then(dbThoughts => {
                 if (!dbThoughts) {
-                    res.status(404).json({message: 'No thought found with this id'})
+                    res.status(404).json({ message: 'No thought found with this id'} )
                     return;
                 }
                 res.json(dbThoughts);
