@@ -1,24 +1,44 @@
-const router = require('express').Router()
-const {
-    getAllUsers,
-    getUserById,
-    createUser,
-    updateUser,
-    deleteUser,
-    createFriend,
-    deleteFriend
-} = require('../../controllers/user-controller')
+const { Schema, model } = require('mongoose');
 
-router.route('/')
-    .get(getAllUsers)
-    .post(createUser)
+const UserSchema = new Schema (
+    {
+        username: {
+            type: String,
+            unique: true,
+            required: true,
+            trim: true
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, 'Please fill out a valid email address']
+        },
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Thought'
+            }
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ]
+    },
+    {
+        toJSON: {
+            virtuals: true
+        },
+        id: false
+    }
+);
 
-router.route('/:id').get(getUserById)
-    .put(updateUser)
-    .delete(deleteUser)
+UserSchema.virtual('friendCount').get(function () {
+    return this.friends.length;
+})
 
-router.route('/:id/friends/:friendId')
-    .post(createFriend)
-    .delete(deleteFriend)
+const User = model('User', UserSchema);
 
-module.exports = router
+module.exports = User
