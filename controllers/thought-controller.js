@@ -14,7 +14,6 @@ const thoughtController  = {
     // get a thought by ID
     getThoughtById({ params }, res) {
         Thought.findOne({ _id: params.thoughtId })
-            .select('-__v')
             .then(dbThoughts => res.json(dbThoughts))
             .catch(err => {
                 console.log(err)
