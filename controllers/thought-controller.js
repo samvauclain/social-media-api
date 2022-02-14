@@ -13,7 +13,7 @@ const thoughtController  = {
 
     // get a thought by ID
     getThoughtById({ params }, res) {
-        Thought.findOne({ _id: params.id })
+        Thought.findOne({ _id: params.thoughtId })
             .select('-__v')
             .then(dbThoughts => res.json(dbThoughts))
             .catch(err => {
@@ -33,7 +33,7 @@ const thoughtController  = {
             })
             .then(dbThoughts => {
                 if (!dbThoughts) {
-                    res.status(404).json({ message: 'No thought found with this id'} )
+                    res.status(404).json({ message: 'No user found with this id'} )
                     return;
                 }
                 res.json(dbThoughts);

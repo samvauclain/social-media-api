@@ -14,6 +14,11 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/social-me
   useUnifiedTopology: true
 });
 
+// mongoose.connect('mongodb://localhost:27017/social-media',function(){
+//     /* Drop the DB */
+//     mongoose.connection.db.dropDatabase();
+// });
+
 mongoose.set('debug', true);
 
 app.listen(PORT, () => console.log(`Connected to server on localhost:${PORT}`));

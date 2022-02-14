@@ -75,7 +75,7 @@ const userController = {
     // create new friend
     createFriend({ params }, res) {
         User.findOneAndUpdate(
-            { _id: params.id }, 
+            { _id: params.userId }, 
             { $push: 
                 { friends: params.friendId } 
             }, 
