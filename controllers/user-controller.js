@@ -6,6 +6,10 @@ const userController = {
      getAllUsers(req, res) {
         User.find({})
             .select('-__v')
+            .populate({
+                path:'thoughts',
+                select: '-__v'
+            })
             .then(dbUser => res.json(dbUser))
             .catch(err => {
                 console.log(err);

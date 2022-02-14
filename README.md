@@ -1,5 +1,7 @@
 # Social Media Api
 
+## Video walkthrough:
+https://watch.screencastify.com/v/ZGcvsp8zWsJvNHqxcKgd
 
 ## AS A social media startup
 I WANT an API for my social network that uses a NoSQL database
