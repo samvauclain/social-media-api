@@ -1,7 +1,10 @@
 # Social Media Api
 
-## Video walkthrough:
+## TWO Video walkthroughs:
 https://watch.screencastify.com/v/ZGcvsp8zWsJvNHqxcKgd
+
+## Orriginally forgot to include the part about adding and deleting friends, here's the 2nd video:
+https://watch.screencastify.com/v/gs9sDtmTq9mwsoO7sSee
 
 ## AS A social media startup
 I WANT an API for my social network that uses a NoSQL database
