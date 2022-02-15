@@ -19,7 +19,8 @@ const userController = {
 
     // getting user by id
     getUserById({ params }, res) {
-        console.log(params)
+        // console.log("TEST");
+        // console.log(params)
         User.findOne({ _id: params.id })
             .populate({
                 path:'thoughts',
@@ -78,8 +79,10 @@ const userController = {
 
     // create new friend
     createFriend({ params }, res) {
+        console.log("TEST");
+        console.log(params)
         User.findOneAndUpdate(
-            { _id: params.userId }, 
+            { _id: params.id }, 
             { $push: 
                 { friends: params.friendId } 
             }, 
@@ -98,7 +101,7 @@ const userController = {
     // delete friend
     deleteFriend({ params }, res) {
         User.findOneAndUpdate(
-            { _id: params.userId },
+            { _id: params.id },
             { $pull: 
                 { friends: params.friendId }
             },
